@@ -25,3 +25,9 @@ Post- Used to send data to the server
 Put- Used to update data
 Delete- Used to delete data
 
+Creating a collection into a database, 
+store names, and other info under names.
+
+get put delete post, front end
+
+CRUD- Create, Read, Update, Delete
