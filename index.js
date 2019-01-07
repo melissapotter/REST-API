@@ -1,13 +1,11 @@
-const express = require('express')
+const express = require('express');
 
 //set up express app
-
 const app = express();
 
-app.get('/api', function(req,res){
-    console.log('GET request');
-    res.send({ name: 'Meli' });
-});
+//initlialize routes
+app.use('/api', require('./routes/api'));
+
 
 //listen for requests
 app.listen(process.env.port || 4000, function(){
