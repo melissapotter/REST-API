@@ -19,5 +19,8 @@
   "homepage": "https://github.com/iamshaunjp/rest-api-playlist#readme",
   "devDependencies": {
     "nodemon": "^1.18.9"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3"
   }
 }
