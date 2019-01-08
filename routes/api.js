@@ -3,7 +3,7 @@ const router = express.Router();
 const Member = require('../models/member.js');
 
 // get a list of member from the database
-router.get('/members', function (req,res){
+router.get('/members', function (req,res,next){
     res.send({
         type: 'GET'
         
@@ -11,22 +11,22 @@ router.get('/members', function (req,res){
 });
 
 // add a new member to the database
-router.post('/members', function (req,res){
+router.post('/members', function (req,res,next){
     // var member = new Member(req.body);
     // member.save();
     Member.create(req.body).then(function(member){
         res.send(member);
-    });
+    }).catch(next);
 });
     
 
 // update a member in the datbase
-router.put('/members/:id', function (req,res){
+router.put('/members/:id', function (req,res,next){
     res.send({type: 'PUT'});
 });
 
 // delete a member from the datatbase
-router.delete('/members/:id', function (req,res){
+router.delete('/members/:id', function (req,res,next){
     res.send({type: 'DELETE'});
 });
 
