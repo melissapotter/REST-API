@@ -27,7 +27,9 @@ router.put('/members/:id', function (req,res,next){
 
 // delete a member from the datatbase
 router.delete('/members/:id', function (req,res,next){
-    res.send({type: 'DELETE'});
+    Member.findByIdAndRemove({_id: req.params.id}).then(function(member){
+    res.send(member);
+    });
 });
 
 module.exports = router;
