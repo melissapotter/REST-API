@@ -1,28 +1,32 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const Member = require('../models/member.js');
 
-// get a list of members from the database
-router.get('/members', function(req,res){
-    res.send({type: 'GET'});
-});
-
-//add new member to DB
-router.post('/members', function(req,res){
-    console.log(req.body);
-    res.send({type: 'POST',
-    name: req.body.name,
-    rank: req.body.rank
+// get a list of member from the database
+router.get('/members', function (req,res){
+    res.send({
+        type: 'GET'
+        
     });
-    
 });
 
-//update a member in DB
-router.put('/members/:id', function(req,res){
+// add a new member to the database
+router.post('/members', function (req,res){
+    // var member = new Member(req.body);
+    // member.save();
+    Member.create(req.body).then(function(member){
+        res.send(member);
+    });
+});
+    
+
+// update a member in the datbase
+router.put('/members/:id', function (req,res){
     res.send({type: 'PUT'});
 });
 
-//delete member from DB
-router.delete('/members/:id', function(req,res){
+// delete a member from the datatbase
+router.delete('/members/:id', function (req,res){
     res.send({type: 'DELETE'});
 });
 
