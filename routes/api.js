@@ -22,7 +22,12 @@ router.post('/members', function (req,res,next){
 
 // update a member in the datbase
 router.put('/members/:id', function (req,res,next){
-    res.send({type: 'PUT'});
+    Member.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
+        Member.findOne({_id: req.params.id}).then(function(member){
+           res.send(member);  
+        });
+       
+    });
 });
 
 // delete a member from the datatbase
