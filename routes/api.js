@@ -4,10 +4,16 @@ const Member = require('../models/member.js');
 
 // get a list of member from the database
 router.get('/members', function (req,res,next){
-    res.send({
-        type: 'GET'
-        
-    });
+    // Member.find({}).then(function(members){
+    //     res.send(members);
+    // }); - return all members
+    Member.geoNear(
+        {type: "Point", coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]},
+        {maxDistance: 100000, spherical: true}
+        ).then(function(members){
+            res.send(members);
+        });
+    
 });
 
 // add a new member to the database
