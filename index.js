@@ -9,6 +9,8 @@ const app = express();
 mongoose.connect('mongodb://localhost/memberclub');
 mongoose.Promise = global.Promise;
 
+app.use(express.static('public'));
+
 app.use(bodyParser.json());
 // intialize routes
 app.use('/api', require("./routes/api"));
